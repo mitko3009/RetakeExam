@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css}" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" th:href="@{https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css}" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+<meta charset="utf-8">
+<link rel="stylesheet" th:href="@{/css/style.css}">
+<title> CSS Pricing Table</title>
+</head>
+
+<body>
+<div class="demo">
+        <div class="container">
+            <div class="row text-center">
+                <h1 class="heading-title">All laptops</h1>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4 col-sm-6" th:each="l: ${laptops}" th:object="${l}">
+                    <div class="pricingTable">
+                        <div class="pricingTable-header">
+                            <h3 class="heading" th:text="*{make} + ' ' + *{model}"></h3>
+                        </div>
+                        <ul class="pricing-content">
+                            <li th:text="|Cpu: *{cpu}|">/li>
+                            <li th:text="|Ram: *{ram}|"></li>
+                            <li th:text="|Seller: *{sellerName}|"></li>
+                            <li th:text="|Price: *{price}|"></li>
+
+                        </ul>
+                        <a th:href="@{/offers/laptops/{id}/details(id=*{id})}" class="read">Details<i class="fa fa-angle-right"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
